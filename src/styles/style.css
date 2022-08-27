@@ -1,0 +1,118 @@
+@import ".reset.css";
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@100;400;700&display=swap");
+body {
+  font-family: "Sora", sans-serif;
+  color: #fffffe;
+}
+
+body {
+  background-color: #0F0E17;
+}
+
+.container {
+  max-width: 840px;
+  margin: 0 auto;
+  padding: 0 20px;
+  overflow: hidden;
+}
+
+.header__body {
+  margin-top: 60px;
+}
+.header__img {
+  display: flex;
+  justify-content: center;
+}
+.header__title {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.31;
+  text-align: center;
+  margin-top: 60px;
+}
+.header__main-stats {
+  margin-top: 60px;
+}
+
+.main-stats {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.main-stats > div {
+  text-align: center;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 1.18;
+}
+.main-stats__value {
+  font-weight: 100;
+  font-size: 98px;
+  line-height: 150px;
+}
+.main-stats [datatype=averageTime] {
+  color: #FFE62D;
+}
+.main-stats [datatype=bestTime] {
+  color: #28DB5A;
+}
+
+.main__results {
+  margin-top: 100px;
+}
+
+.results__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.results__left {
+  display: flex;
+}
+.results__title {
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 1.18;
+}
+.results__counter {
+  margin-left: 5px;
+}
+.results__input {
+  width: 50px;
+  text-align: center;
+  padding: 8px 32px;
+  background-color: transparent;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: inherit;
+  border: 1px solid #fffffe;
+  color: #fffffe;
+  border-radius: 8px;
+}
+.results__button {
+  margin-left: 20px;
+  padding: 8px 32px;
+  background-color: transparent;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: inherit;
+  border: 1px solid #fffffe;
+  color: #fffffe;
+  border-radius: 32px;
+}
+.results__button i {
+  margin-left: 10px;
+}
+.results__body {
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+  list-style-type: none;
+}
+.item-result {
+  border: 1px solid #fffffe;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,188 @@
+@import ".reset.css";
+@import "../colors/colors";
+@import "../fonts/fonts";
+
+body {
+  background-color: #0F0E17;
+}
+
+.container {
+  max-width: 840px;
+  margin: 0 auto;
+  padding: 0 20px;
+  overflow: hidden;
+}
+
+.header {
+  &__body {
+    margin-top: 60px;
+  }
+
+  &__img {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__title {
+    @include headline;
+    text-align: center;
+    margin-top: 60px;
+  }
+
+  &__main-stats {
+    margin-top: 60px;
+  }
+}
+
+.container {
+}
+
+.main-stats {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+  flex-wrap: wrap;
+
+  & > div{
+    text-align: center;
+    @include title;
+  }
+
+  &__title {
+  }
+
+  &__value {
+    font-weight: 100;
+    font-size: 98px;
+    line-height: 150px;
+  }
+
+  [datatype = 'averageTime'] {
+    color: #FFE62D;
+  }
+
+  [datatype = 'bestTime'] {
+    color: #28DB5A;
+  }
+}
+
+.main {
+  &__body {
+  }
+
+  &__results {
+    margin-top: 100px;
+  }
+}
+
+.results {
+  &__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  &__left {
+    display: flex;
+  }
+
+  &__title {
+    @include title;
+  }
+
+  &__counter {
+    margin-left: 5px;
+  }
+
+  &__right {
+  }
+
+  &__form {
+  }
+
+  &__input {
+    width: 50px;
+    text-align: center;
+    padding: 8px 32px;
+    background-color: transparent;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: inherit;
+    border: 1px solid $headline;
+    color:  $headline;
+    border-radius: 8px;
+  }
+
+
+
+  &__button {
+    margin-left: 20px;
+    padding: 8px 32px;
+    background-color: transparent;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: inherit;
+    border: 1px solid $headline;
+    color:  $headline;
+    border-radius: 32px;
+
+    i {
+      margin-left: 10px;
+    }
+
+    &:hover {
+
+    }
+  }
+
+  &__body {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    list-style-type: none;
+  }
+
+  &__item {
+  }
+}
+
+.fa-solid {
+}
+
+.fa-plus {
+}
+
+.item-result {
+
+  border: 1px solid $headline;
+  &__data {
+  }
+
+  &__number {
+  }
+
+  &__date {
+  }
+
+  &__time {
+  }
+
+  &__actual-time {
+  }
+
+  &__record-difference {
+  }
+
+  &__average-difference {
+  }
+
+  &__delete-btn {
+  }
+}
+
+.fa-regular {
+}
+
+.fa-trash-can {
+}
