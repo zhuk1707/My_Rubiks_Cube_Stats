@@ -48,8 +48,8 @@ body {
 }
 .main-stats__value {
   font-weight: 100;
-  font-size: 98px;
-  line-height: 150px;
+  font-size: 72px;
+  line-height: 1.5;
 }
 .main-stats [datatype=averageTime] {
   color: #FFE62D;
@@ -79,32 +79,38 @@ body {
 }
 .results__counter {
   margin-left: 5px;
+  color: #a7a9be;
 }
 .results__input {
-  width: 50px;
+  max-width: 80px;
   text-align: center;
-  padding: 8px 32px;
+  padding: 8px;
   background-color: transparent;
   font-family: inherit;
   font-size: 14px;
   font-weight: inherit;
-  border: 1px solid #fffffe;
+  border: 1px solid #a7a9be;
   color: #fffffe;
-  border-radius: 8px;
+  border-radius: 16px;
 }
 .results__button {
   margin-left: 20px;
   padding: 8px 32px;
   background-color: transparent;
   font-family: inherit;
-  font-size: 14px;
   font-weight: inherit;
+  font-size: 14px;
   border: 1px solid #fffffe;
   color: #fffffe;
   border-radius: 32px;
+  transition: 0.3s ease;
 }
 .results__button i {
   margin-left: 10px;
+}
+.results__button:hover {
+  background-color: #fffffe;
+  color: #0f0e17;
 }
 .results__body {
   margin: 0 0 0 0;
@@ -112,7 +118,54 @@ body {
   list-style-type: none;
 }
 .item-result {
-  border: 1px solid #fffffe;
+  font-size: 14px;
+  border-radius: 16px;
+  border: 1px solid #a7a9be;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px 10px 30px;
+}
+.item-result:first-child {
+  margin-top: 30px;
+}
+.item-result:not(:last-child) {
+  margin-bottom: 20px;
+}
+.item-result__data {
+  display: flex;
+  gap: 25px;
+}
+.item-result__number {
+  color: #a7a9be;
+}
+.item-result__time {
+  display: flex;
+  gap: 50px;
+}
+.item-result__delete-btn {
+  height: 24px;
+  width: 24px;
+  padding: 10px;
+  font-size: 16px;
+  background-color: transparent;
+  font-family: inherit;
+  font-weight: inherit;
+  border-color: transparent;
+  color: #fffffe;
+  position: relative;
+  transition: 0.3s ease;
+}
+.item-result__delete-btn i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.item-result__delete-btn:hover {
+  background: rgba(242, 95, 76, 0.1);
+  border-radius: 20px;
+  color: #f25f4c;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,0 +1,9 @@
+@mixin transition {
+  transition: .3s ease;
+}
+
+@mixin formStyles{
+  background-color: transparent;
+  font-family: inherit;
+  font-weight: inherit;
+}
