@@ -22,17 +22,15 @@
                 <div class="header__main-stats main-stats">
                     <div class="main-stats__item">
                         <div class="main-stats__title">Best Time</div>
-                        <div class="main-stats__value"
-                             datatype="bestTime">
-                            00:00.00
+                        <div class="main-stats__value record-time">
+                            00:00.0
                         </div>
                     </div>
 
                     <div class="main-stats__item">
                         <div class="main-stats__title">Average Time</div>
-                        <div class="main-stats__value"
-                             datatype="averageTime">
-                            00:00.00
+                        <div class="main-stats__value average-time" >
+                            00:00.0
                         </div>
                     </div>
                 </div>
@@ -52,8 +50,18 @@
 
                         <div class="results__right">
                             <form class="results__form">
-                                <input class="results__input" type="text"
-                                       placeholder="mm:ss.ms" maxlength="8">
+                                <input class="results__input results__input_mm"
+                                       type="text"
+                                       placeholder="mm" maxlength="2" required>
+                                <span>:</span>
+                                <input
+                                        class="results__input results__input_ss" type="text"
+                                       placeholder="ss" maxlength="2" required>
+                                <span>.</span>
+                                <input
+                                        class="results__input results__input_ms" type="text"
+                                       placeholder="ms" maxlength="2" required>
+
                                 <button type="submit" class="results__button">
                                     Add <i class="fa-solid fa-plus"></i>
                                 </button>
@@ -61,23 +69,23 @@
                         </div>
                     </div>
                     <ul class="results__body">
-                        <li class="results__item item-result">
-                            <div class="item-result__data">
-                                <div class="item-result__number">01</div>
-                                <div class="item-result__date">05.05.2022</div>
-                            </div>
-                            <div class="item-result__time">
-                                <div class="item-result__actual-time">5:11</div>
-                                <div
-                                        class="item-result__record-difference">0</div>
-                                <div
-                                        class="item-result__average-difference">2:14</div>
-                            </div>
-                            <button class="item-result__delete-btn"
-                                    type="button">
-                                <i class="fa-solid fa-xmark"></i>
-                            </button>
-                        </li>
+<!--                        <li class="results__item item-result">-->
+<!--                            <div class="item-result__data">-->
+<!--                                <div class="item-result__number">01</div>-->
+<!--                                <div class="item-result__date">05.05.2022</div>-->
+<!--                            </div>-->
+<!--                            <div class="item-result__time">-->
+<!--                                <div class="item-result__actual-time">5:11</div>-->
+<!--                                <div-->
+<!--                                        class="item-result__record-difference">0</div>-->
+<!--                                <div-->
+<!--                                        class="item-result__average-difference">2:14</div>-->
+<!--                            </div>-->
+<!--                            <button class="item-result__delete-btn"-->
+<!--                                    type="button">-->
+<!--                                <i class="fa-solid fa-xmark"></i>-->
+<!--                            </button>-->
+<!--                        </li>-->
                     </ul>
                 </div>
             </div>

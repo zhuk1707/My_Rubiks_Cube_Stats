@@ -1,4 +1,4 @@
-@import ".reset.css";
+@import "reset.css";
 @import "../colors/colors";
 @import "../fonts/fonts";
 @import "vars-and-mixins";
@@ -58,17 +58,18 @@ body {
     line-height: 1.5;
   }
 
-  [datatype = 'averageTime'] {
+  .average-time {
     color: #FFE62D;
   }
 
-  [datatype = 'bestTime'] {
+  .record-time {
     color: #28DB5A;
   }
 }
 
 .main {
   &__body {
+    margin-bottom: 80px;
   }
 
   &__results {
@@ -102,6 +103,9 @@ body {
   }
 
   &__form {
+    span {
+      padding: 0 5px;
+    }
   }
 
   &__input {
@@ -168,7 +172,7 @@ body {
 
   &__data {
     display: flex;
-    gap: 25px;
+    gap: 50px;
   }
 
   &__number {
@@ -180,16 +184,23 @@ body {
 
   &__time {
     display: flex;
+    width: 40%;
+    //justify-content: space-between;
     gap: 50px;
   }
 
   &__actual-time {
+    flex: 0 0 30%;
   }
 
   &__record-difference {
+    flex: 0 0 30%;
+
   }
 
   &__average-difference {
+    flex: 0 0 30%;
+
   }
 
   &__delete-btn {

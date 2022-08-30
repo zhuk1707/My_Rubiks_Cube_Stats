@@ -1,4 +1,4 @@
-@import ".reset.css";
+@import "reset.css";
 @import url("https://fonts.googleapis.com/css2?family=Sora:wght@100;400;700&display=swap");
 body {
   font-family: "Sora", sans-serif;
@@ -51,13 +51,16 @@ body {
   font-size: 72px;
   line-height: 1.5;
 }
-.main-stats [datatype=averageTime] {
+.main-stats .average-time {
   color: #FFE62D;
 }
-.main-stats [datatype=bestTime] {
+.main-stats .record-time {
   color: #28DB5A;
 }
 
+.main__body {
+  margin-bottom: 80px;
+}
 .main__results {
   margin-top: 100px;
 }
@@ -80,6 +83,9 @@ body {
 .results__counter {
   margin-left: 5px;
   color: #a7a9be;
+}
+.results__form span {
+  padding: 0 5px;
 }
 .results__input {
   max-width: 80px;
@@ -134,14 +140,24 @@ body {
 }
 .item-result__data {
   display: flex;
-  gap: 25px;
+  gap: 50px;
 }
 .item-result__number {
   color: #a7a9be;
 }
 .item-result__time {
   display: flex;
+  width: 40%;
   gap: 50px;
+}
+.item-result__actual-time {
+  flex: 0 0 30%;
+}
+.item-result__record-difference {
+  flex: 0 0 30%;
+}
+.item-result__average-difference {
+  flex: 0 0 30%;
 }
 .item-result__delete-btn {
   height: 24px;
