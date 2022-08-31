@@ -179,8 +179,20 @@ body {
 .item-result__record-difference {
   flex: 0 0 30%;
 }
+.item-result__record-difference_red {
+  color: #f25f4c;
+}
+.item-result__record-difference_green {
+  color: #28DB5A;
+}
 .item-result__average-difference {
   flex: 0 0 30%;
+}
+.item-result__average-difference_red {
+  color: #f25f4c;
+}
+.item-result__average-difference_green {
+  color: #28DB5A;
 }
 .item-result__delete-btn {
   height: 24px;

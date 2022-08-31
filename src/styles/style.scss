@@ -63,7 +63,7 @@ body {
   }
 
   .record-time {
-    color: #28DB5A;
+    color: $green;
   }
 }
 
@@ -196,11 +196,25 @@ body {
   &__record-difference {
     flex: 0 0 30%;
 
+    &_red {
+      color: $red;
+    }
+
+    &_green {
+      color: $green;
+    }
   }
 
   &__average-difference {
     flex: 0 0 30%;
 
+    &_red {
+      color: $red;
+    }
+
+    &_green {
+      color: $green;
+    }
   }
 
   &__delete-btn {

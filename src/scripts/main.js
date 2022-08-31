@@ -9,6 +9,8 @@ const resultsCounter = document.querySelector('.results__counter')
 let results = []
 
 //main code==============================================================
+
+
 form.addEventListener('submit',addResult)
 
 allResults.addEventListener('click', deleteResult)
@@ -39,6 +41,40 @@ function msToStr(n) {
 }
 
 function renderResultNote(el) {
+  let recordDifTypeClass = ''
+  let charBeforeRecord = ''
+  switch (el.recordDifType) {
+    case "red": {
+      recordDifTypeClass = 'item-result__record-difference item-result__record-difference_red'
+      charBeforeRecord = '+'
+    }
+      break
+    case "green": {
+      recordDifTypeClass = 'item-result__record-difference item-result__record-difference_green'
+      charBeforeRecord = '-'
+    }
+      break
+    case "white": recordDifTypeClass = 'item-result__record-difference'
+  }
+
+  let averageDifTypeClass = ''
+  let charBeforeAverage = ''
+  switch (el.averageDifType) {
+    case "red": averageDifTypeClass = 'item-result__average-difference' +
+      ' item-result__average-difference_red'
+      charBeforeAverage = '+'
+      break
+    case "green": averageDifTypeClass = 'item-result__average-difference' +
+      ' item-result__average-difference_green'
+      charBeforeAverage = '-'
+      break
+    case "white": averageDifTypeClass = 'item-result__average-difference'
+  }
+  
+  function concatCharAndTime(char, prop) {
+    return (char)? char.concat(prop) : prop
+  }
+
   const noteHtml = ` <li class="results__item item-result" id="${el.id}">
                             <div class="item-result__data">
                                 <div class="item-result__number">${el.resultNum}</div>
@@ -47,9 +83,9 @@ function renderResultNote(el) {
                             <div class="item-result__time">
                                 <div class="item-result__actual-time">${el.actualTime}</div>
                                 <div
-                                        class="item-result__record-difference">${el.recordDif}</div>
+                                        class="${recordDifTypeClass}">${concatCharAndTime(charBeforeRecord, el.recordDif)}</div>
                                 <div
-                                        class="item-result__average-difference">${el.averageDif}</div>
+                                        class="${averageDifTypeClass}">${concatCharAndTime(charBeforeAverage ,el.averageDif)}</div>
                             </div>
                             <button class="item-result__delete-btn"
                                     type="button">
@@ -61,13 +97,21 @@ function renderResultNote(el) {
 }
 
 function renderMainStats() {
-  const values = results.map(e => strToMs(e.actualTime))
+  if (results.length !== 0) {
+    const values = results.map(e => strToMs(e.actualTime))
 
-  const record = Math.min.apply(null, values)
-  recordTime.innerHTML = msToStr(record)
+    const record = Math.min.apply(null, values)
+    recordTime.innerHTML = msToStr(record)
 
-  const average = Math.floor(values.reduce((total, i) => total + i ,0) / values.length)
-  averageTime.innerHTML = msToStr(average)
+    const average = Math.floor(values.reduce((total, i) => total + i ,0) / values.length)
+    averageTime.innerHTML = msToStr(average)
+  } else {
+    recordTime.innerHTML = msToStr(0)
+    averageTime.innerHTML = msToStr(0)
+  }
+  
+  
+  
 }
 
 function renderResultCounter() {
@@ -93,7 +137,24 @@ function addResult(e) {
   }
 
   const recordDifTxt = msToStr(strToMs(recordTime.innerHTML) - strToMs(actualTimeTxt))
+  let recordDifTypeTemp = ''
+  if (strToMs(recordTime.innerHTML) > strToMs(actualTimeTxt)) {
+    recordDifTypeTemp = 'green'
+  } else if (strToMs(recordTime.innerHTML) < strToMs(actualTimeTxt)) {
+    recordDifTypeTemp = 'red'
+  } else {
+    recordDifTypeTemp = 'white'
+  }
+    
   const averageDifTxt = msToStr(strToMs(averageTime.innerHTML) - strToMs(actualTimeTxt))
+  let averageDifTypeTemp = ''
+  if (strToMs(averageTime.innerHTML) > strToMs(actualTimeTxt)) {
+    averageDifTypeTemp = 'green'
+  } else if (strToMs(averageTime.innerHTML) < strToMs(actualTimeTxt)) {
+    averageDifTypeTemp = 'red'
+  } else {
+    averageDifTypeTemp = 'white'
+  }
 
   const newResult = {
     id: Date.now(),
@@ -101,7 +162,9 @@ function addResult(e) {
     resultDate: currentDateTxt,
     actualTime: actualTimeTxt,
     recordDif: recordDifTxt,
-    averageDif: averageDifTxt
+    recordDifType: averageDifTypeTemp,
+    averageDif: averageDifTxt,
+    averageDifType: averageDifTypeTemp
   }
 
   results.push(newResult)
@@ -123,11 +186,12 @@ function deleteResult(e) {
 
     results.splice(index, 1)
     parentNode.remove()
+
+    renderMainStats()
+    renderResultCounter()
   }
 }
 
-//TODO delete
-//TODO highlights
 //TODO validation
 //TODO localstorage
 //TODO adaptive
