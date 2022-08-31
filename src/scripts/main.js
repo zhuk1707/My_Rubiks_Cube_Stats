@@ -1,12 +1,19 @@
 const recordTime = document.querySelector('.record-time')
 const averageTime = document.querySelector('.average-time')
 const form = document.querySelector('.results__form');
-const inputedMin = document.querySelector('.results__input_mm')
-const inputedSec = document.querySelector('.results__input_ss')
-const inputedMil = document.querySelector('.results__input_ms')
+const enteredMin = document.querySelector('.results__input_mm')
+const enteredSec = document.querySelector('.results__input_ss')
+const enteredMil = document.querySelector('.results__input_ms')
 const allResults = document.querySelector('.results__body')
+const resultsCounter = document.querySelector('.results__counter')
 let results = []
 
+//main code==============================================================
+form.addEventListener('submit',addResult)
+
+allResults.addEventListener('click', deleteResult)
+
+//functions===============================================================
 function strToMs(str) {
   const values = []
   const arr = str.split(':')
@@ -14,18 +21,14 @@ function strToMs(str) {
   const oneMin = 60 * 1000
   const oneSec = 1000
 
-  arr.forEach(e => {
-    values.push(Number(e))
-  })
+  arr.forEach(e => values.push(Number(e)))
 
   return values[0] * oneMin + values[1] * oneSec
 }
 
 function msToStr(n) {
-  if (n < 0) {
-    n = -n
-  }
-  
+  if (n < 0) {n = -n}
+
   const oneMin = 60 * 1000
   const oneSec = 1000
 
@@ -33,45 +36,7 @@ function msToStr(n) {
   const ss = ((n % oneMin) / oneSec).toFixed(2)
 
   return `${(mm < 10)? '0' + mm : mm}:${(ss < 10)? '0' + ss : ss}`
-
 }
-
-
-form.addEventListener('submit', (e) => {
-  e.preventDefault()
-
-  const currentDate = new Date()
-  const currentDateTxt = `${currentDate.getDate()}/` +
-    `${currentDate.getMonth()}/` + 
-    `${currentDate.getFullYear()}`
-
-  const actualTimeTxt = msToStr(strToMs(`${inputedMin.value}:` +
-    `${inputedSec.value}.` +
-    `${inputedMil.value}`))
-
-  if (results.length === 0) {
-    recordTime.innerHTML = actualTimeTxt
-    averageTime.innerHTML = actualTimeTxt
-  }
-
-  const recordDifTxt = msToStr(strToMs(recordTime.innerHTML) - strToMs(actualTimeTxt))
-  const averageDifTxt = msToStr(strToMs(averageTime.innerHTML) - strToMs(actualTimeTxt))
-  
-  const newResult = {
-    id: Date.now(),
-    resultNum: results.length + 1,
-    resultDate: currentDateTxt,
-    actualTime: actualTimeTxt,
-    recordDif: recordDifTxt,
-    averageDif: averageDifTxt
-  }
-
-  results.push(newResult)
-  console.log(results)
-  renderResultNote(newResult)
-  renderMainStats()
-
-})
 
 function renderResultNote(el) {
   const noteHtml = ` <li class="results__item item-result" id="${el.id}">
@@ -102,7 +67,67 @@ function renderMainStats() {
   recordTime.innerHTML = msToStr(record)
 
   const average = Math.floor(values.reduce((total, i) => total + i ,0) / values.length)
-  console.log(average)
   averageTime.innerHTML = msToStr(average)
 }
 
+function renderResultCounter() {
+  resultsCounter.innerHTML = results.length
+}
+
+//main functions
+function addResult(e) {
+  e.preventDefault()
+
+  const currentDate = new Date()
+  const currentDateTxt = `${currentDate.getDate()}/` +
+    `${currentDate.getMonth()}/` +
+    `${currentDate.getFullYear()}`
+
+  const actualTimeTxt = msToStr(strToMs(`${enteredMin.value}:` +
+    `${enteredSec.value}.` +
+    `${enteredMil.value}`))
+
+  if (results.length === 0) {
+    recordTime.innerHTML = actualTimeTxt
+    averageTime.innerHTML = actualTimeTxt
+  }
+
+  const recordDifTxt = msToStr(strToMs(recordTime.innerHTML) - strToMs(actualTimeTxt))
+  const averageDifTxt = msToStr(strToMs(averageTime.innerHTML) - strToMs(actualTimeTxt))
+
+  const newResult = {
+    id: Date.now(),
+    resultNum: results.length + 1,
+    resultDate: currentDateTxt,
+    actualTime: actualTimeTxt,
+    recordDif: recordDifTxt,
+    averageDif: averageDifTxt
+  }
+
+  results.push(newResult)
+
+  enteredMin.value = ''
+  enteredSec.value = ''
+  enteredMil.value = ''
+
+  renderResultNote(newResult)
+  renderMainStats()
+  renderResultCounter()
+}
+
+function deleteResult(e) {
+  if (e.target.closest('.item-result__delete-btn')) {
+    const parentNode = e.target.closest('.results__item')
+    const parentId = Number(parentNode.id)
+    const index = results.findIndex(task => task.id === parentId)
+
+    results.splice(index, 1)
+    parentNode.remove()
+  }
+}
+
+//TODO delete
+//TODO highlights
+//TODO validation
+//TODO localstorage
+//TODO adaptive
