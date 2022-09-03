@@ -9,7 +9,14 @@ const resultsCounter = document.querySelector('.results__counter')
 let results = []
 
 //main code==============================================================
+// enteredMin.addEventListener('keydown', inputValidation)
 
+if (localStorage.getItem('results')) {
+  results = JSON.parse(localStorage.getItem('results'))
+  results.forEach(el => renderResultNote(el))
+  renderResultCounter()
+  renderMainStats()
+}
 
 form.addEventListener('submit',addResult)
 
@@ -121,7 +128,7 @@ function renderResultCounter() {
 //main functions
 function addResult(e) {
   e.preventDefault()
-
+  
   const currentDate = new Date()
   const currentDateTxt = `${currentDate.getDate()}/` +
     `${currentDate.getMonth()}/` +
@@ -176,6 +183,8 @@ function addResult(e) {
   renderResultNote(newResult)
   renderMainStats()
   renderResultCounter()
+
+  saveToLocalStorage()
 }
 
 function deleteResult(e) {
@@ -189,7 +198,13 @@ function deleteResult(e) {
 
     renderMainStats()
     renderResultCounter()
+
+    saveToLocalStorage()
   }
+}
+
+function saveToLocalStorage() {
+  localStorage.setItem('results', JSON.stringify(results))
 }
 
 //TODO validation
